@@ -7,6 +7,8 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 Dotenv::Railtie.load
 
+Dotenv::Railtie.load
+
 module RecipeApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
