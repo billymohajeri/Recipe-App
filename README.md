@@ -71,8 +71,11 @@ git clone git@github.com:billymohajeri/Recipe-App.git
 Install this project with:
 
 ```cd Recipe-App```
+
 ```bundle install``` to install all gems used.
+
 ```rails db:create``` to create the database.
+
 ```rails db:migrate``` to run the database migrations you created.
 
 ### Usage
