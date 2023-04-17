@@ -5,18 +5,18 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV["ROR_RECIPE_APP_DATABASE_NAME"] %>
+  database: Recipe_App_development
   username: <%= ENV["ROR_RECIPE_APP_DATABASE_USERNAME"] %>
   password: <%= ENV["ROR_RECIPE_APP_DATABASE_PASSWORD"] %>
 
 test:
   <<: *default
-  database: <%= ENV["ROR_RECIPE_APP_DATABASE_NAME"] %>
+  database: Recipe_App_test
   username: <%= ENV["ROR_RECIPE_APP_DATABASE_USERNAME"] %>
   password: <%= ENV["ROR_RECIPE_APP_DATABASE_PASSWORD"] %>
 
 production:
   <<: *default
-  database: <%= ENV["ROR_RECIPE_APP_DATABASE_NAME"] %>
+  database: Recipe_App_production
   username: <%= ENV["ROR_RECIPE_APP_DATABASE_USERNAME"] %>
   password: <%= ENV["ROR_RECIPE_APP_DATABASE_PASSWORD"] %>
