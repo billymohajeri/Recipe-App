@@ -24,6 +24,9 @@ default: &default
 development:
   <<: *default
   database: Recipe_App_development
+  database: <%= ENV["ROR_RECIPE_APP_DATABASE_NAME"] %>
+  username: <%= ENV["ROR_RECIPE_APP_DATABASE_USERNAME"] %>
+  password: <%= ENV["ROR_RECIPE_APP_DATABASE_PASSWORD"] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,6 +61,8 @@ development:
 test:
   <<: *default
   database: Recipe_App_test
+  username: <%= ENV["ROR_RECIPE_APP_DATABASE_USERNAME"] %>
+  password: <%= ENV["ROR_RECIPE_APP_DATABASE_PASSWORD"] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,5 +87,5 @@ test:
 production:
   <<: *default
   database: Recipe_App_production
-  username: Recipe_App
-  password: <%= ENV["RECIPE_APP_DATABASE_PASSWORD"] %>
+  username: <%= ENV["ROR_RECIPE_APP_DATABASE_USERNAME"] %>
+  password: <%= ENV["ROR_RECIPE_APP_DATABASE_PASSWORD"] %>
