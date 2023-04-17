@@ -56,7 +56,6 @@ Rails.application.configure do
     :tsl => true,
     enable_starttls_auto: true
   }
-  #ENV['GMAIL_PASSWORD']
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
