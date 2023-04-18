@@ -41,3 +41,9 @@ footer {
   border: black 2px solid;
   padding: 1rem 2rem;
 }
+
+.shopping-item {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+}
