@@ -1,12 +1,17 @@
-<div id="<%= dom_id recipe %>">
+<div id="<%= dom_id recipe %>" class="recipe-container">
   <p>
-    <strong>Name:</strong>
+    <strong>
     <%= recipe.name %>
+    </strong>
   </p>
 
-  <p>
+  <p class="inline">
     <strong>Preparation time:</strong>
     <%= recipe.preparation_time %>
+  </p>
+  <p class="inline">
+    <strong>Public:</strong>
+    <%= recipe.public %>
   </p>
 
   <p>
@@ -15,12 +20,8 @@
   </p>
 
   <p>
-    <strong>Description:</strong>
+
     <%= recipe.description %>
   </p>
-
-  <p>
-    <strong>Public:</strong>
-    <%= recipe.public %>
-  </p>
+  
   </div>
