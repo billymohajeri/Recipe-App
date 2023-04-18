@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+html,
+body {
+  height: 100%;
+}
+
+.containers {
+  min-height: 100%;
+  padding: 50px 0;
+  box-sizing: border-box;
+}
+
+footer {
+  height: 50px;
+  margin-top: -50px;
+}
