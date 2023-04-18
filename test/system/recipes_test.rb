@@ -14,10 +14,11 @@ class RecipesTest < ApplicationSystemTestCase
     visit recipes_url
     click_on 'New recipe'
 
-    fill_in 'Measurement unit', with: @recipe.measurement_unit
+    fill_in 'Preparation time', with: @recipe.preparation_time
     fill_in 'Name', with: @recipe.name
-    fill_in 'Price', with: @recipe.price
-    fill_in 'Quantity', with: @recipe.quantity
+    fill_in 'Cooking time', with: @recipe.cooking_time
+    fill_in 'Description', with: @recipe.description
+    fill_in 'Pulic', with: @recipe.public
     click_on 'Create Recipe'
 
     assert_text 'Recipe was successfully created'
@@ -28,10 +29,11 @@ class RecipesTest < ApplicationSystemTestCase
     visit recipe_url(@recipe)
     click_on 'Edit this recipe', match: :first
 
-    fill_in 'Measurement unit', with: @recipe.measurement_unit
+    fill_in 'Preparation time', with: @recipe.preparation_time
     fill_in 'Name', with: @recipe.name
-    fill_in 'Price', with: @recipe.price
-    fill_in 'Quantity', with: @recipe.quantity
+    fill_in 'Cooking time', with: @recipe.cooking_time
+    fill_in 'Description', with: @recipe.description
+    fill_in 'Public', with: @recipe.public
     click_on 'Update Recipe'
 
     assert_text 'Recipe was successfully updated'
