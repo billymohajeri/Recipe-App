@@ -1,17 +1,19 @@
-.recipe-container{
+.recipe-container {
   /* display: flex; */
+
   /* flex-direction: column; */
+
   /* align-items: center; */
+
   /* justify-content: center; */
   text-align: center;
 }
 
-.flexbox{
+.flexbox {
   display: flex;
-  justify-content:space-around
+  justify-content: space-around;
 }
 
-.inline{
+.inline {
   display: inline-block;
-  
 }
