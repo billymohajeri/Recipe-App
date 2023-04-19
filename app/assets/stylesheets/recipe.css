@@ -6,11 +6,12 @@
   text-align: center;
 }
 
-.button-container{
+.flexbox{
   display: flex;
-  justify-content: center;
+  justify-content:space-around
 }
 
 .inline{
   display: inline-block;
+  
 }
