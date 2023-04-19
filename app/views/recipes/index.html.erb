@@ -6,7 +6,7 @@
   <div>
   <p class="recipe-name"><%= recipe.name %></p>
   <a href="<%= recipe_path(id: recipe.id) %>" class="recipe-section">
-        <%= link_to 'REMOVE', recipe_path(id: recipe.id), data: { turbo_method: :delete, turbo_confirm: 'Delete the recipe?' }, class: '' %></td>
+        <%= link_to 'Remove', recipe_path(id: recipe.id), data: { turbo_method: :delete, turbo_confirm: 'Delete the recipe?' }, class: '' %></td>
         <%= link_to 'View', recipe_path(id: recipe.id) %>
       </div>
       <p><%= recipe.description %></p>

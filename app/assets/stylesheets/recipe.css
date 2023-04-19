@@ -155,3 +155,7 @@ form {
 .recipe-name {
   font-size: 1.5rem;
 }
+
+.flexbox {
+  display: flex;
+}

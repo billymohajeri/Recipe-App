@@ -8,11 +8,12 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
+  resources :public_recipes
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   root "foods#index"
-  get '/public_recipes', to: 'recipes#public'
+  
   get '/recipes', to: 'recipes#index'
   get '/general_shopping_list', to: 'shoppinglists#index'
   post 'toggle_public', to: 'recipes#toggle'

@@ -20,9 +20,9 @@
 <% end %>
 
     </div>
-    <div class="recipe-btns">
-        <%= button_to 'Generate shopping List', shoppinglists_path(), method: :get, class: 'button' %>
-<%= button_to 'Add ingredient', new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'button' %>
+    <div class="flexbox">
+        <%= button_to 'Generate shopping List', shoppinglists_path(), method: :get, class: '' %>
+<%= button_to 'Add ingredient', new_recipe_recipe_food_path(recipe_id: @recipe.id), class: '' %>
 </div>
 <br />
 <hr />
@@ -42,8 +42,8 @@
         <td><%= recipe_food.quantity %> <%= recipe_food.food.measurement_unit%></td>
         <td>$ <%= recipe_food.food.price %></td>
         <td>
-            <%= link_to 'Delete', recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), data: { turbo_method: :delete }, class: 'delete-btn' %>
-            <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), class: ' delete-btn modify-btn' %>
+            <%= link_to 'Delete', recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), data: { turbo_method: :delete }, class: '' %>
+            <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), class: '' %>
         </td>
       </tr>
     <% end %>
