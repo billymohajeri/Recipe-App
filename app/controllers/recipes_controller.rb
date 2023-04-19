@@ -1,77 +1,84 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update destroy]
-
-  # GET /recipes or /recipes.json
+  before_action :set_user, expect: [:update]
+  # def index
+  #   @users = User.includes(recipes: %i[recipe_foods foods]).includes(:foods)
+  #   @food_counts = @users.map { |user| [user.name, user.foods.count] }
+  #   @food_prices = @users.map { |user| [user.name, user.foods.sum(:price)] }
+  #   @recipes = Recipe.includes(:recipe_foods, :foods).where(public: true).order('created_at DESC')
+  # end
   def index
-    @recipes = Recipe.all
+    @recipes = @user.recipes
   end
 
-  # GET /public_recipe
-  def public
-    @recipes = Recipe.where(public: true).order(created_at: :desc)
-  end
+  # def show
+  #   @recipe = Recipe.find(params[:id])
+  #   @recipe_foods = @recipe.recipe_foods
+  # end
 
-  # GET /general_shopping list
-  def general; end
-
-  # GET /recipes/1 or /recipes/1.json
-  def show; end
-
-  # GET /recipes/new
   def new
     @recipe = Recipe.new
   end
 
-  # GET /recipes/1/edit
-  def edit; end
+  def show
+    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
+    @recipe_foods = @recipe.recipe_foods
+  end
 
-  # POST /recipes or /recipes.json
+  def public_allocation
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(public: params[:recipe][:public])
+    redirect_to @recipe
+  end
+
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user_id = current_user.id
+    @recipe.user = @user
 
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.' }
-        format.json { render :show, status: :created, location: @recipe }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    if @recipe.save
+      flash[:notice] = 'Recipe created successfully!'
+      redirect_to recipe_path(id: @recipe.id)
+    else
+      flash.now[:alert] = @recipe.errors.full_messages.first if @recipe.errors.any?
+      render :new, status: unprocessable_entity
     end
   end
 
-  # PATCH/PUT /recipes/1 or /recipes/1.json
-  def update
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /recipes/1 or /recipes/1.json
+  # def destroy_from_form
+  #   @food = Food.find(params[:food_id])
+  #   @food.destroy
+  #   redirect_to foods_path(current_user)
+  # end
   def destroy
-    @recipe.destroy
+    @recipe = Recipe.find(params[:id])
 
-    respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
-      format.json { head :no_content }
+    if @recipe.destroy
+      flash[:notice] = 'Recipe deleted successfully!'
+      redirect_to recipes_path
+    else
+      flash.now[:alert] = @recipe.errors.full_messages.first if @recipe.errors.any?
+      render :index, status: 400
     end
+  end
+
+  def toggle
+    @recipe = Recipe.find(params[:id])
+    @recipe.public = !@recipe.public
+    text = @recipe.public? ? 'public' : 'private'
+
+    if @recipe.save
+      flash[:notice] = "#{@recipe.name} is now #{text}!"
+    elsif @recipe.errors.any?
+      flash[:alert] = @recipe.errors.full_messages.first
+    end
+    redirect_to recipe_path(id: @recipe.id)
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_recipe
-    @recipe = Recipe.find(params[:id])
+  def set_user
+    @user = current_user
   end
 
-  # Only allow a list of trusted parameters through.
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end

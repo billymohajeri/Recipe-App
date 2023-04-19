@@ -1,14 +1,20 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Recipes</h1>
-
-<div id="recipes">
-  <% @recipes.each do |recipe| %>
-    <%= render recipe %>
-    <p>
-      <%= link_to "Show this recipe", recipe %>
-    </p>
-  <% end %>
+<%= stylesheet_link_tag "recipe", "data-turbo-track": "reload" %>
+<section class="recipe-section">
+<div class="recipe-container">
+    <% @recipes.each do |recipe| %>
+<div class="recipe-item">
+<div>
+<p class="recipe-name"><%= recipe.name %></p>
+<%= link_to 'REMOVE', recipe_path(id: recipe.id), data: { turbo_method: :delete, turbo_confirm: 'Delete the recipe?' }, class: '' %></td>
+</div>
+<p><%= recipe.description %></p>
+</div>
+    <% end %>
+</div>
+<div><button type="button" class="btn"><%= link_to "Add a new recipe", new_recipe_path %></button>
+<button type="button" class="btn"><%= link_to "Go to public recipes", public_recipes_path %></button>
 </div>
 
-<%= link_to "New recipe", new_recipe_path %>
+</section>
+
+

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resources :foods
   devise_for :users
-  resources :recipes
+  
+  resources :recipes do
+    resources :recipe_foods
+  end
   devise_scope :user do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
@@ -9,6 +12,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "foods#index"
-  get '/public_recipe', to: 'recipes#public'
+  get '/public_recipes', to: 'recipes#public'
+  get '/recipes', to: 'recipes#index'
   get '/general_shopping_list', to: 'shoppinglists#index'
+  post 'toggle_public', to: 'recipes#toggle'
+  resources :shoppinglists
 end
