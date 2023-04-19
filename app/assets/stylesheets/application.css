@@ -158,3 +158,10 @@ input[type="submit"]:hover {
   font-weight: bold;
   cursor: pointer;
 }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-top: 150px;
+}
