@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "foods#index"
-  get '/public_recipes', to: 'recipes#public'
+  get '/public_recipe', to: 'recipes#public'
+  get '/general_shopping_list', to: 'shoppinglists#index'
 end

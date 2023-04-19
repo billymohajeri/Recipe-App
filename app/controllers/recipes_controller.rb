@@ -11,6 +11,9 @@ class RecipesController < ApplicationController
     @recipes = Recipe.where(public: true).order(created_at: :desc)
   end
 
+  # GET /general_shopping list
+  def general; end
+
   # GET /recipes/1 or /recipes/1.json
   def show; end
 
