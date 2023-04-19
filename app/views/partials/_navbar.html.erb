@@ -8,16 +8,16 @@
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Food", foods_path, class: "nav-link active" %>
+            <%= link_to "Foods", foods_path, class: "nav-link active" %>
           </li>
           <li class="nav-item">
             <%= link_to "Recipes", recipes_path, class: "nav-link active" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Public_Recipes", foods_path, class: "nav-link active" %>
+            <%= link_to "Public Recipes", foods_path, class: "nav-link active" %>
           </li>
           <li class="nav-item">
-            <%= link_to "shopping_list", foods_path, class: "nav-link active" %>
+            <%= link_to "Shopping List", foods_path, class: "nav-link active" %>
           </li>
           <li class="nav-item">
             <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
