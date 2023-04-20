@@ -1,7 +1,7 @@
 class PublicRecipesController < ApplicationController
   before_action :set_user
   def index
-    @public_recipes = Recipe.includes(recipe_foods: :food).where(public: true)
+    @public_recipes = Recipe.where(public: true)
   end
 
   private
