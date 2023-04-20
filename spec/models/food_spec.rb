@@ -32,7 +32,7 @@ RSpec.describe Food, type: :model do
   end
 
   it 'Price should have a valid value' do
-    expect(subject.price).to eql 7.0
+    expect(subject.price).to eql 7
   end
 
   it 'Quantity should be present' do
@@ -41,6 +41,6 @@ RSpec.describe Food, type: :model do
   end
 
   it 'Quantity should have a valid value' do
-    expect(subject.quantity).to eql 5.0
+    expect(subject.quantity).to eql 5
   end
 end
