@@ -41,6 +41,6 @@ RSpec.describe Food, type: :model do
   end
 
   it 'Quantity should have a valid value' do
-    expect(subject.quantity).to eql 5
+    expect(subject.quantity).to eql 15
   end
 end
