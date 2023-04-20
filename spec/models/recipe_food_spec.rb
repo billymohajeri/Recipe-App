@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe RecipeFood, type: :model do
   subject do
-    @user = User.create(name: 'Tetteh')
-    @food = Food.create(name: 'Tomatoe', measurement_unit: 'kg', price: 7, quantity: 5, user_id: @user.id)
-    @recipe = Recipe.create(name: 'Pizza', preparation_time: 1, cooking_time: 2, description: 'Melt and cook',
+    @user = User.create(name: 'Billy')
+    @food = Food.create(name: 'Milk', measurement_unit: 'liter', price: 2, quantity: 5, user_id: @user.id)
+    @recipe = Recipe.create(name: 'Pasta', preparation_time: 3, cooking_time: 1, description: 'You know how',
                             public: true, user_id: @user.id)
-    @recipe_food = RecipeFood.create(quantity: 13, food_id: @food.id, recipe_id: @recipe.id)
+    @recipe_food = RecipeFood.create(quantity: 3, food_id: @food.id, recipe_id: @recipe.id)
   end
 
   before { subject.save }
@@ -17,7 +17,7 @@ RSpec.describe RecipeFood, type: :model do
   end
 
   it 'Quantity should have valid value' do
-    expect(subject.quantity).to eql 13
+    expect(subject.quantity).to eql 3
   end
 
   it 'Quantity should be a integer' do
