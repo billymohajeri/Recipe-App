@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Food, type: :model do
   subject do
-    @user = User.create(name: 'Tetteh')
-    @food = Food.create(name: 'Tomatoe', measurement_unit: 'kg', price: 7, quantity: 5, user_id: @user.id)
+    @user = User.create(name: 'Billy')
+    @food = Food.create(name: 'Milk', measurement_unit: 'liter', price: 2, quantity: 15, user_id: @user.id)
   end
 
   before { subject.save }
@@ -14,7 +14,7 @@ RSpec.describe Food, type: :model do
   end
 
   it 'Name should have valid value' do
-    expect(subject.name).to eql 'Tomatoe'
+    expect(subject.name).to eql 'Milk'
   end
 
   it 'Measurement unit should be present' do
@@ -23,7 +23,7 @@ RSpec.describe Food, type: :model do
   end
 
   it 'Measurement unit should have a valid value' do
-    expect(subject.measurement_unit).to eql 'kg'
+    expect(subject.measurement_unit).to eql 'liter'
   end
 
   it 'Mrice should be present' do
@@ -32,7 +32,7 @@ RSpec.describe Food, type: :model do
   end
 
   it 'Price should have a valid value' do
-    expect(subject.price).to eql 7
+    expect(subject.price).to eql 2
   end
 
   it 'Quantity should be present' do
