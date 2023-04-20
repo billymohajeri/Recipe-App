@@ -1,19 +1,9 @@
 class RecipesController < ApplicationController
   before_action :set_user, expect: [:update]
-  # def index
-  #   @users = User.includes(recipes: %i[recipe_foods foods]).includes(:foods)
-  #   @food_counts = @users.map { |user| [user.name, user.foods.count] }
-  #   @food_prices = @users.map { |user| [user.name, user.foods.sum(:price)] }
-  #   @recipes = Recipe.includes(:recipe_foods, :foods).where(public: true).order('created_at DESC')
-  # end
+  
   def index
     @recipes = @user.recipes
   end
-
-  # def show
-  #   @recipe = Recipe.find(params[:id])
-  #   @recipe_foods = @recipe.recipe_foods
-  # end
 
   def new
     @recipe = Recipe.new
@@ -43,11 +33,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  # def destroy_from_form
-  #   @food = Food.find(params[:food_id])
-  #   @food.destroy
-  #   redirect_to foods_path(current_user)
-  # end
   def destroy
     @recipe = Recipe.find(params[:id])
 
