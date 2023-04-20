@@ -181,7 +181,6 @@ footer {
   display: flex;
 }
 
-
 /* recipe */
 .food-container {
   display: grid;
@@ -189,7 +188,6 @@ footer {
   width: 70%;
   margin: auto;
 }
-
 
 /* slidder */
 .switch {
