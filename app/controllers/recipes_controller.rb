@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_user, expect: [:update]
-  
+
   def index
     @recipes = @user.recipes
   end
