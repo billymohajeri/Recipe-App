@@ -9,12 +9,16 @@
         <th scope="col">Food</th>
         <th scope="col">Measurement unit</th>
         <th scope="col">Unit Price</th>
-        <th scope="col">Action</th>
+        <% if user_signed_in? %>
+          <th scope="col">Action</th>
+        <% end %>
       </tr>
     </thead>
     <% @foods.each do |food| %>
       <%= render food %>
-      <td><%= link_to "Show this food", food %></td>
+      <% if user_signed_in? %>
+        <td><%= link_to "Show this food", food %></td>
+      <% end %>
     <% end %>
     </tr>
   </tbody>
@@ -22,4 +26,6 @@
   </table>
 </div>
 
+<% if user_signed_in? %>
 <%= link_to "New food", new_food_path %>
+<% end %>
