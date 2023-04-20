@@ -64,9 +64,11 @@ form {
   display: flex;
   flex-direction: column;
   max-width: 500px;
+  justify-content: center;
   margin: auto;
   padding: 20px;
-  border: 1px solid #ccc;
+
+  /* border: 1px solid #ccc; */
   border-radius: 5px;
 }
 
@@ -87,16 +89,16 @@ label {
   font-weight: bold;
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="number"] {
   width: 95%;
   padding: 10px;
   margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
+} */
 
-input[type="submit"] {
+/* input[type="submit"] {
   padding: 10px;
   margin-top: 20px;
   background-color: #ffa500;
@@ -108,7 +110,7 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #45a049;
-}
+} */
 
 .index-section {
   display: flex;
@@ -164,4 +166,12 @@ footer {
   bottom: 0;
   width: 100%;
   margin-top: 150px;
+}
+
+.description-input {
+  height: 6rem;
+}
+
+.center {
+  text-align: center;
 }

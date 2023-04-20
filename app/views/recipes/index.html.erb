@@ -1,20 +1,17 @@
 <%= stylesheet_link_tag "recipe", "data-turbo-track": "reload" %>
-
+<div class="center">
+  <%= link_to "New recipe", new_recipe_path, class: "center" %>
+</div>
 <% @recipes.each do |recipe| %>
   <div class="recipe-container">
-  <div class="recipe-item">
-  <div>
-  <p class="recipe-name"><%= recipe.name %></p>
-  <a href="<%= recipe_path(id: recipe.id) %>" class="recipe-section">
+    <div class="recipe-item">
+      <div>
+        <p class="recipe-name"><%= recipe.name %></p>
+        <a href="<%= recipe_path(id: recipe.id) %>" class="recipe-section">
         <%= link_to 'Remove', recipe_path(id: recipe.id), data: { turbo_method: :delete, turbo_confirm: 'Delete the recipe?' }, class: '' %></td>
         <%= link_to 'View', recipe_path(id: recipe.id) %>
       </div>
       <p><%= recipe.description %></p>
     </div>
   </div>
-  
 <% end %>
-
-
-
-
