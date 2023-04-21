@@ -1,0 +1,59 @@
+<main class="flex flex-col content-center items-center m-5 p-2">
+  <div class="header">
+    <h1 class="text-4xl font-extrabold dark:text-white m-5"><%= @recipe.name %></h1>  
+  </div>
+
+  <div class="food-container">
+  <div class="food-name">
+    <p>Preparation time: <%= @recipe.preparation_time %> minutes</p>
+    <p>Cooking time: <%= @recipe.cooking_time %> minutes</p>
+    <p><%= @recipe.description %></p>
+  </div>
+  <%= form_for @recipe, url: toggle_public_path(id: @recipe.id), method: :post do |f| %>
+    <div class="swith-btn">
+      <p><%= @recipe.public? ? 'Public' : 'Private' %></p>
+      <label class="switch">
+      <div><%= f.submit "" %></div>
+        <%= f.check_box :public, { checked: @recipe.public } %>
+        <span class="slider round"></span>
+      </label>
+    </div>
+    
+  <% end %>
+   
+  </div>  
+  <% if @recipe.user == current_user %>
+  <div class="flexbox">
+    <%= button_to 'Generate shopping List', shoppinglists_path(), method: :get, class: '' %>  
+    <%= button_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe.id), method: :get, class: '' %>  
+  </div>
+  <% end %>
+
+<hr class="w-4/6 rounded-sm h-1 my-6 bg-gray-500" />
+
+<div class="center">
+<table class='w-3/6 mt-5 text-sm text-left text-gray-500 dark:text-gray-400'>
+  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <tr>
+      <th scope="col" class="px-6 py-3">Name</th>
+      <th scope="col" class="px-6 py-3">Quantity</th>
+      <th scope="col" class="px-6 py-3">Value</th>
+      <th scope="col" class="px-6 py-3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipe.recipe_foods.each do |recipe_food| %>
+      <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+        <td class="px-6 py-4"><%= recipe_food.food.name %></td>
+        <td class="px-6 py-4"><%= recipe_food.quantity %> <%= recipe_food.food.measurement_unit %></td>
+        <td class="px-6 py-4">$ <%= recipe_food.food.price * recipe_food.quantity %></td>
+        <td class="px-6 py-4">
+          <%= link_to 'Remove', recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), data: { turbo_method: :delete }, class: '' %>
+          <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), class: '' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</main>
